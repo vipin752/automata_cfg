@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+ <title>Context Free Grammer Project</title>
+      <meta charset="UTF-8">
+      <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+     
+  </head>
+  <style text="style/css">
+    .center{
+        position: absolute;
+        margin: -100px 0 0 -377px;
+        top: 50%;
+        left: 50%;
+    }
+  </style>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+    <div class="center">
+	<h1>Context Free Grammer Interpreter Testing Below</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('test')}}" method="post">
+        <!-- <label for="test">Grammer:</label> -->
+    	<!--<input type="text" name="grammer" placeholder="$" value="$" required="required" readonly/>-->
+    	<label>Grammer</label>
+             <select style="width:150px;"  id = "grammer" name="grammer" required="required">
+               <option value ="NAN">Select Grammer</option>
+               <option value ="dfa">DFA</option>
+               <option value ="nfa">NFA</option>
+            </select>
+    	<label for="rule">Rule:</label>
+        <input type="text" name="rule" placeholder="word" required="required" />
+        <br>
+        <label for="test">Give the input for Accept or Reject:</label><br>
+        <textarea required="required" id="test" name="text" rows="4" cols="50"></textarea><br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Test</button>
+    </form>
+   <p style="color: forestgreen;margin-left: 86px;">{{ test_result }}</p>
+
+ </div>
+    
+    {% endblock %}
+  </body>
+</html>
